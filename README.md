@@ -1,75 +1,54 @@
-# Programa de Edición de Fotos
 
-Este proyecto es una aplicación de escritorio en C++ que permite aplicar filtros y transformaciones básicas a imágenes. Está construido usando únicamente la biblioteca estándar de C++ (STD), lo que lo hace portable y fácil de compilar en diferentes sistemas.
+# Programa de Edición de Fotos – Proyecto de Algoritmos
 
-## Características
+## Descripción del Proyecto
 
-- Conversión a escala de grises, sepia y negativo.
-- Ajuste de brillo y contraste.
-- Rotación y escalado de imágenes.
-- Interfaz simple por línea de comandos.
-- Soporte para formatos de imagen comunes como PNG y JPG.
+Este proyecto es una aplicación de consola escrita en **C++17** que permite realizar **edición básica de imágenes** mediante filtros y transformaciones sencillas. Se desarrolló con fines académicos (curso de **Algoritmos**), utilizando únicamente la biblioteca estándar de C++ y librerías auxiliares de código abierto para manejo de imágenes (stb_image/stb_image_write). El programa carga una imagen (formato **PNG/JPG** soportado) en memoria, la procesa píxel a píxel aplicando los filtros seleccionados, y guarda una nueva imagen con los cambios realizados.
 
-## Requisitos
+---
 
-- Compilador compatible con C++17.
-- CMake 3.10 o superior.
-- Sistema con soporte para operaciones de lectura/escritura de archivos de imagen (JPG, PNG, etc.).
+## Funcionamiento para el Usuario
 
-## Instalación
+1. Ejecutar el programa desde consola.
+2. Seleccionar una imagen desde `testImages/`.
+3. Aplicar filtros como blanco y negro, negativo, rotar, etc.
+4. Opción para deshacer cambios recientes.
+5. Guardar la imagen editada en `resultImages/`.
 
-### 1. Clona el repositorio:
+---
 
-```bash
-git clone https://github.com/acalde02/Programa-de-Edicion-de-Fotos.git
-cd Programa-de-Edicion-de-Fotos
-```
+## Funcionamiento Interno (Resumen Técnico)
 
-### 2. Crea el directorio de compilación:
+- La imagen se representa como una matriz `vector<vector<Pixel>>`.
+- Se implementó una pila (`std::stack`) para deshacer filtros.
+- El filtro de relleno por color usa una pila explícita para simular búsqueda DFS.
+- El filtro Pixel Sort aplica el algoritmo QuickSort recursivo por filas.
+- Se usan bucles anidados para rotación, detección de bordes y efectos de brillo.
 
-```bash
-mkdir build
-cd build
-```
+---
 
-### 3. Genera el proyecto con CMake:
+## Algoritmos Usados y Justificación
 
-```bash
-cmake ..
-```
+### Algoritmos No Recursivos
 
-### 4. Compílalo:
+Se emplearon bucles iterativos simples para filtros como escala de grises, inversión de colores, intercambio de canales, detección de bordes (Sobel) y rotación de imágenes. Estas soluciones son eficientes (O(n)) y fáciles de mantener, ideales para recorrer estructuras como matrices de píxeles.
 
-```bash
-make
-```
+### Recursividad (QuickSort)
 
-## Uso
+Se implementó QuickSort de manera recursiva para ordenar los píxeles en cada fila de la imagen en el filtro Pixel Sort. Este algoritmo fue elegido por su eficiencia media O(n log n) frente a otros como BubbleSort.
 
-Desde el directorio `build`, ejecuta:
+### Pilas
 
-```bash
-./ProgramaEdicionFotos
-```
+- **Historial de filtros:** Se utiliza un `std::stack` para guardar versiones anteriores de la imagen y permitir deshacer filtros.
+- **Flood Fill:** Implementación iterativa de un algoritmo tipo DFS utilizando una pila explícita de coordenadas.
 
-Sigue las instrucciones en pantalla para cargar una imagen, elegir un filtro o transformación, y guardar el resultado.  
-Las imágenes editadas se guardan en la carpeta `resultImages`.
+### Listas contiguas (vectores)
 
-## Estructura del Proyecto
+Las imágenes y las estructuras de píxeles se gestionan con `vector` y `vector<vector<Pixel>>` para facilitar el acceso aleatorio y una implementación eficiente en memoria contigua.
 
-```
-Programa-de-Edicion-de-Fotos/
-├── src/             # Código fuente del programa
-├── testImages/      # Imágenes de prueba incluidas para experimentar
-├── resultImages/    # Salida de imágenes editadas
-├── CMakeLists.txt   # Archivo para configurar la compilación
-```
+### Ordenamiento
 
-## Licencia
-
-Este proyecto utiliza únicamente la biblioteca estándar de C++ (STD), que se encuentra bajo la licencia de la implementación utilizada (por ejemplo, GNU GPL para GCC o Apache 2.0/LLVM para Clang).
-
-No se incluye código de terceros con licencias adicionales.
+Se aplicó **QuickSort** manualmente sobre cada fila de la imagen para lograr un efecto visual de gradiente (Pixel Sort), reforzando el aprendizaje del algoritmo recursivo y su uso práctico.
 
 ---
 
@@ -77,9 +56,5 @@ No se incluye código de terceros con licencias adicionales.
 
 Este proyecto fue desarrollado por:
 
-- Adrián Calderón de Amat  [@acalde02](https://github.com/acalde02)
+- Adrián Calderón de Amat [@acalde02](https://github.com/acalde02)
 - Pedro Antonio Morales Nieto [@ErCoCo](https://github.com/ErCoCo)
-
-
-
-
