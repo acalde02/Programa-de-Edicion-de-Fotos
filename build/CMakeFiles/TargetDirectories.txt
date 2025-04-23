@@ -1,0 +1,3 @@
+C:/Users/acald/OneDrive/Documentos/University/U-TAD/2024-2025/24-2/Algoritmos/AlgoritmosTrabajoFinal/build/CMakeFiles/proyecto_final.dir
+C:/Users/acald/OneDrive/Documentos/University/U-TAD/2024-2025/24-2/Algoritmos/AlgoritmosTrabajoFinal/build/CMakeFiles/edit_cache.dir
+C:/Users/acald/OneDrive/Documentos/University/U-TAD/2024-2025/24-2/Algoritmos/AlgoritmosTrabajoFinal/build/CMakeFiles/rebuild_cache.dir
