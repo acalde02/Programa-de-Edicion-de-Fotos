@@ -71,5 +71,15 @@ Este proyecto utiliza únicamente la biblioteca estándar de C++ (STD), que se e
 
 No se incluye código de terceros con licencias adicionales.
 
+---
+
+## Autores
+
+Este proyecto fue desarrollado por:
+
+- Adrián Calderón de Amat  [@acalde02](https://github.com/acalde02)
+- Pedro Antonio Morales Nieto [@ErCoCo](https://github.com/ErCoCo)
+
+
 
 
